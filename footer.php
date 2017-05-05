@@ -1,4 +1,6 @@
 <?php 
+date_default_timezone_set('UTC');
+
 echo '<footer id="footer"><!--Footer-->
 		<div class="footer-top">
 			<div class="container">
