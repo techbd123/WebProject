@@ -1479,14 +1479,29 @@ h2.title {
   line-height: 25px;
 }
 
-.login-form form span input {
+.signup-form form span{
+  line-height: 25px;
+}
+
+.login-form form span input{
   width: 15px;
   float: left;
   height: 15px;
   margin-right: 5px;
 }
 
+.signup-form form span input{
+  width: 15px;
+  float: right;
+  height: 15px;
+  margin: 0px;
+}
+
 .login-form form button {
+  margin-top: 23px;
+}
+
+.signup-form form button{
   margin-top: 23px;
 }
 

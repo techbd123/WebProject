@@ -95,7 +95,7 @@
 									<input type="password" placeholder="Password"/>
 									<span>
 										Are you a developer?
-										<input type="checkbox" class="checkbox"> 
+										<input type="checkbox" class="checkbox">
 									</span>
 									<button type="submit" class="btn btn-default">Signup</button>
 								</form>
