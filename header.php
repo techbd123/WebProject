@@ -51,14 +51,12 @@ $bannerImageSrc="images/shop/advertisement.jpg";
 			</div>
 		</div>
 	</div><!--/header-middle-->
-	
-	<section id="advertisement">
-		<div class="container">
-			<img src="<?php echo $bannerImageSrc ?>" alt="" />
-		</div>
-	</section>
-
 	<div class="header-bottom"><!--header-bottom-->
+		<section id="advertisement">
+			<div class="container">
+				<a href="."><img src="<?php echo $bannerImageSrc ?>" alt="" /></a>
+			</div>
+		</section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
