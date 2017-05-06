@@ -63,48 +63,44 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom">
-			<section id="form"><!--form-->
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-4 col-sm-offset-1">
-							<div class="login-form"><!--login form-->
-								<h2>Login to Your Account</h2>
-								<form action="#">
-									<input type="email" placeholder="Username/Email Address" />
-									<input type="password" placeholder="Password"/>
-									<span>
-										<input type="checkbox" class="checkbox"> 
-										Keep me signed in
-									</span>
-									<button type="submit" class="btn btn-default">Login</button>
-								</form>
-							</div><!--/login form-->
-						</div>
-						<div class="col-sm-1">
-							<h2 class="or">OR</h2>
-						</div>
-						<div class="col-sm-4">
-							<div class="signup-form"><!--sign up form-->
-								<h2>New User Signup!</h2>
-								<form action="#">
-									<input type="text" placeholder="Username"/>
-									<input type="email" placeholder="Email Address"/>
-									<input type="password" placeholder="Password"/>
-									<span>
-										Are you a developer?
-										<input type="checkbox" class="checkbox">
-									</span>
-									<button type="submit" class="btn btn-default">Signup</button>
-								</form>
-							</div><!--/sign up form-->
-						</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 col-sm-offset-0">
+						<div class="login-form"><!--login form-->
+							<h2>Login to Your Account</h2>
+							<form action="#">
+								<input type="email" placeholder="Username/Email Address" />
+								<input type="password" placeholder="Password"/>
+								<span>
+									<input type="checkbox" class="checkbox"> 
+									Keep me signed in
+								</span>
+								<button type="submit" class="btn btn-default">Login</button>
+							</form>
+						</div><!--/login form-->
+					</div>
+					<div class="col-sm-1 col-sm-offset-1">
+						<h2 class="or">OR</h2>
+					</div>
+					<div class="col-sm-5 col-sm-offset-1">
+						<div class="signup-form"><!--sign up form-->
+							<h2>New User Signup!</h2>
+							<form action="#">
+								<input type="text" placeholder="Username"/>
+								<div></div>
+								<input type="email" placeholder="Email Address"/>
+								<input type="password" placeholder="Password"/>
+								<span>
+									Are you a developer?
+									<input type="checkbox" class="checkbox">
+								</span>
+								<button type="submit" class="btn btn-default">Signup</button>
+							</form>
+						</div><!--/sign up form-->
 					</div>
 				</div>
-			</section><!--/form-->
-		</div><!--/header-bottom-->
+			</div>		
+		</div><!--/header-middle-->
 	</header><!--/header-->
 
 	<footer id="footer"><!--Footer-->
