@@ -88,11 +88,11 @@
     }
 ?>
 
-<section id="advertisement">
+<!--section id="advertisement">
 	<div class="container">
 		<img src="<?php echo $bannerImageSrc ?>" alt="" />
 	</div>
-</section>
+</section-->
 
 <section>
 	<div class="container">
