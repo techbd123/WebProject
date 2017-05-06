@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 07, 2017 at 12:05 AM
+-- Generation Time: May 07, 2017 at 03:06 AM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `appinfo` (
   `appid` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` enum('games','application','desktop') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subcategory` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `developerid` bigint(20) UNSIGNED NOT NULL,
   `version` double DEFAULT NULL,
   `applogolink` varchar(2047) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
