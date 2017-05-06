@@ -2,6 +2,23 @@
 
 $bannerImageSrc="images/shop/advertisement.jpg";
 
+class Link
+{
+	public $name;
+	public $href;
+	public $classValue;
+	function __construct($name,$href,$classValue)
+	{
+		$this->name=$name;
+		$this->href=$href;
+		$this->classValue=$classValue;
+	}
+}
+
+$loginLink=new Link("Login","login","fa fa-lock");
+$accountLink=new Link("Account","account","fa fa-user");
+
+$isLoggedIn=false;
 
 ?>
 
@@ -43,8 +60,10 @@ $bannerImageSrc="images/shop/advertisement.jpg";
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
-							<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-							<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
+							<?php
+							if($isLoggedIn) printf("<li><a href=\"%s\"><i class=\"%s\"></i>%s</a></li>",$accountLink->href,$accountLink->classValue,$accountLink->name);
+							else printf("<li><a href=\"%s\"><i class=\"%s\"></i>%s</a></li>",$loginLink->href,$loginLink->classValue,$loginLink->name);
+							?>
 						</ul>
 					</div>
 				</div>
@@ -70,4 +89,39 @@ $bannerImageSrc="images/shop/advertisement.jpg";
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+  	var list=[];
+
+	function Listing()
+  	{
+  		var userString=document.getElementById("usernameInput").value;
+  		document.getElementById("showlist").innerHTML='Input string: '+userString+'<br><br>Found usernames = ';
+  		if(userString!="")
+  		{
+  			$.getJSON('search.php?callback=?',{"value":userString},function(data)
+			{
+				list=[];
+		    	$.each(data, function(key, val)
+		    	{
+		    		list.push(val);
+		    	});
+			});
+			Show();
+  		}
+  	}
+
+  	function Show()
+  	{
+  		document.getElementById("list").innerHTML="";
+  		document.getElementById("showlist").innerHTML+=list.length+'<br>';
+  		document.getElementById("ulist").innerHTML="";
+  		for(var i=0;i<list.length;i++)
+  		{
+  			document.getElementById("list").innerHTML+='<option value="'+list[i].username+'">';
+  			document.getElementById("ulist").innerHTML+='<li>'+list[i].username+'</li>';
+  		}
+  	}
+  	</script>
+  	<div id="showlist"></div>
+  	<ul id="ulist"></ul>
 </header>
