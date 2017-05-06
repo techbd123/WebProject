@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 06, 2017 at 10:00 PM
+-- Generation Time: May 06, 2017 at 11:05 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -101,10 +101,15 @@ ALTER TABLE `user`
 ALTER TABLE `appinfo`
   MODIFY `appid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `developer`
+--
+ALTER TABLE `developer`
+  MODIFY `developerid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
@@ -113,7 +118,7 @@ ALTER TABLE `user`
 -- Constraints for table `appinfo`
 --
 ALTER TABLE `appinfo`
-  ADD CONSTRAINT `appinfo_ibfk_1` FOREIGN KEY (`developerid`) REFERENCES `developer` (`developerid`);
+  ADD CONSTRAINT `appinfo_ibfk_1` FOREIGN KEY (`developerid`) REFERENCES `developer` (`developerid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `developer`

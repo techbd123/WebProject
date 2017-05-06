@@ -15,7 +15,6 @@ if($connection->connect_error)
 	die("connection failed! ".$connection->maxdb_connect_error);
 }
 
-	
 $sql="CREATE DATABASE IF NOT EXISTS $databaseName;";
 $sql.="USE $databaseName;";
 
