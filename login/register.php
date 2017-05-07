@@ -1,5 +1,7 @@
 <?php
+
 header("Content-type: text/javascript");
+header('Content-Type: application/json');
 
 $username=NULL;
 $email=NULL;
@@ -57,11 +59,11 @@ $response=null;
 
 if(FindUsername($connection,$username)||empty($username))
 {
-	$response=$callback."(".json_encode(array('username' => false, 'email' => false)).")";	
+	$response=$callback."".json_encode(array('username' => false, 'email' => false))."";	
 }
 else if(FindEmail($connection,$email)||empty($email))
 {
-	$response=$callback."(".json_encode(array('username' => true, 'email' => false)).")";
+	$response=$callback."".json_encode(array('username' => true, 'email' => false))."";
 }
 else
 {
@@ -78,7 +80,7 @@ else
 			$result=mysqli_query($connection,$sql);
 		}
 	}
-	$response=$callback."(".json_encode(array('username' => true, 'email' => true)).")";
+	$response=$callback."".json_encode(array('username' => true, 'email' => true))."";
 }
 
 mysqli_close($connection);

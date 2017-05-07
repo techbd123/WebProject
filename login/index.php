@@ -105,9 +105,9 @@
 				</div>
 			</div>		
 		</div><!--/header-middle-->
+		<p id="demo"></p>
 	</header><!--/header-->
 	<script type="text/javascript">
-		var list={};
 		function ProcessSignup()
 		{
 			var username=document.getElementById("signupUsername").value;
@@ -141,19 +141,18 @@
 			    data: {"username":username,"email":email,"password":password,"isDeveloper":isDeveloper},
 			    success: function(response)
 			    {
-			        alert(response);
-			        /*if(list['username']&&list['email'])
+			        if(response['username']&&response['email'])
 					{
 						alert("Registration Success!");	
 					}
-					else if(list['username'])
+					else if(response['username'])
 					{
 						alert("Email already exists! Try again.");
 					}
 					else
 					{
 						alert("Username already exists! Try again");
-					}*/
+					}
 			    }
 			});
   			return ;
