@@ -16,7 +16,14 @@
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.js"></script>
     <script src="../js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/jquery.js"></script>
+	<script src="../js/price-range.js"></script>
+    <script src="../js/jquery.scrollUp.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.prettyPhoto.js"></script>
+    <script src="../js/main.js"></script>    
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -60,38 +67,22 @@
 						<div class="logo pull-left">
 							<a href="../"><img src="../images/home/logo.png" alt="" /></a>
 						</div>
-						<div class="btn-group pull-right">
-							<!--div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="">Canada</a></li>
-									<li><a href="">UK</a></li>
-								</ul>
-							</div-->
-							
-							<!--div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="">Canadian Dollar</a></li>
-									<li><a href="">Pound</a></li>
-								</ul>
-							</div-->
-						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-								<!--li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li-->
-								<li><a href="login.html" class="active"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href=""><i class="fa fa-user"></i> Account</a>
+									<div class="btn-group pull-right">
+										<div class="btn-group">
+											<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+												<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="../" onclick="ProcessLogout()" >Logout</a></li>
+											</ul>
+										</div>
+									</div>								
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -143,7 +134,14 @@
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->
-	
+
+	<script type="text/javascript">
+		function ProcessLogout()
+		{
+			deleteCookie('login');
+		}
+	</script>
+
 	<section id="form"><!--form-->
 		<div class="container">
 			<div class="row">
@@ -278,14 +276,5 @@
 		</div>
 		
 	</footer><!--/Footer-->
-	
-
-  
-    <script src="../js/jquery.js"></script>
-	<script src="../js/price-range.js"></script>
-    <script src="../js/jquery.scrollUp.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.prettyPhoto.js"></script>
-    <script src="../js/main.js"></script>
 </body>
 </html>
