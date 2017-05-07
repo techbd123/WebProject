@@ -68,14 +68,14 @@
 					<div class="col-sm-5 col-sm-offset-0">
 						<div class="login-form"><!--login form-->
 							<h2>Login to Your Account</h2>
-							<form action="#">
-								<input type="email" placeholder="Username/Email Address" />
+							<form id="loginForm" action="# " method="post">
+								<input type="text" placeholder="Username/Email Address" />
 								<input type="password" placeholder="Password"/>
 								<span>
 									<input type="checkbox" class="checkbox"> 
 									Keep me signed in
 								</span>
-								<button type="submit" class="btn btn-default">Login</button>
+								<button id="loginButton" type="submit" class="btn btn-default">Login</button>
 							</form>
 						</div><!--/login form-->
 					</div>
@@ -85,16 +85,18 @@
 					<div class="col-sm-5 col-sm-offset-1">
 						<div class="signup-form"><!--sign up form-->
 							<h2>New User Signup!</h2>
-							<form action="#">
-								<input type="text" placeholder="Username"/>
-								<div></div>
-								<input type="email" placeholder="Email Address"/>
-								<input type="password" placeholder="Password"/>
+							<form id="signupForm" action="#" method="get">
+								<input type="text" name="username" placeholder="Username"/>
+								<p id="usernameInfo"></p>
+								<input type="email" name="email" placeholder="Email Address"/>
+								<p id="emailInfo"></p>
+								<input type="password" name="password" placeholder="Password"/>
+								<p id="passwordInfo"></p>
 								<span>
 									Are you a developer?
-									<input type="checkbox" class="checkbox">
+									<input type="checkbox" name="isDeveloper" value="1" class="checkbox">
 								</span>
-								<button type="submit" class="btn btn-default">Signup</button>
+								<button id="signupButton" type="submit" class="btn btn-default">Signup</button>
 							</form>
 						</div><!--/sign up form-->
 					</div>
@@ -102,6 +104,10 @@
 			</div>		
 		</div><!--/header-middle-->
 	</header><!--/header-->
+	<script type="text/javascript">
+		
+	</script>
+
 
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
