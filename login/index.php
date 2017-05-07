@@ -143,7 +143,8 @@
 			    {
 			        if(response['username']&&response['email'])
 					{
-						alert("Registration Success!");	
+						alert("Registration Success!");
+						document.getElementById("signupForm").setAttribute("action","../");
 					}
 					else if(response['username'])
 					{
@@ -158,7 +159,6 @@
   			return ;
 		}
 	</script>
-
 
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
