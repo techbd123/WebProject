@@ -135,12 +135,25 @@
 			alert(username+' '+email+' '+password+' '+isDeveloper);
 			$.ajax(
 			{  
+				async: false;
 			    type: 'GET',  
 			    url: 'register.php', 
 			    data: {"username":username,"email":email,"password":password,"isDeveloper":isDeveloper},
-			    success: function(response){
-
-			        content.html(response);
+			    success: function(response)
+			    {
+			        //content.html(response);
+			        if(list['username']&&list['email'])
+					{
+						alert("Registration Success!");	
+					}
+					else if(list['username'])
+					{
+						alert("Email already exists! Try again.");
+					}
+					else
+					{
+						alert("Username already exists! Try again");
+					}
 			    }
 			});
 			/*function(data)
@@ -152,18 +165,7 @@
   		    		list[key]=val;
   		    	});
   			}*/
-  			if(list['username']&&list['email'])
-			{
-				alert("Registration Success!");	
-			}
-			else if(list['username'])
-			{
-				alert("Email already exists! Try again.");
-			}
-			else
-			{
-				alert("Username already exists! Try again");
-			}
+  			
   			return ;
 		}
 	</script>
