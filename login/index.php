@@ -132,7 +132,6 @@
 				document.getElementById("passwordInfo").innerHTML="6 characters minimum";
 				return ;
 			}
-			alert(username+' '+email+' '+password+' '+isDeveloper);
 			$.ajax(
 			{  
 				async: false,
@@ -142,8 +141,8 @@
 			    data: {"username":username,"email":email,"password":password,"isDeveloper":isDeveloper},
 			    success: function(response)
 			    {
-			        //content.html(response);
-			        if(list['username']&&list['email'])
+			        alert(response);
+			        /*if(list['username']&&list['email'])
 					{
 						alert("Registration Success!");	
 					}
@@ -154,19 +153,9 @@
 					else
 					{
 						alert("Username already exists! Try again");
-					}
+					}*/
 			    }
 			});
-			/*function(data)
-  			{
-  				list={};
-  		    	$.each(data, function(key, val)
-  		    	{
-  		    		alert(key+' '+val);
-  		    		list[key]=val;
-  		    	});
-  			}*/
-  			
   			return ;
 		}
 	</script>
