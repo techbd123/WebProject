@@ -81,7 +81,7 @@ else
 	$response=$callback."(".json_encode(array('username' => true, 'email' => true)).")";
 }
 
-echo $response;
-
 mysqli_close($connection);
+
+echo $response;
 ?>
