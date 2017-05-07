@@ -5,6 +5,7 @@ $username=NULL;
 $email=NULL;
 $password=NULL;
 $isDeveloper=0;
+$callback=NULL;
 
 if(isset($_GET['username'])) $username=$_GET['username'];
 if(isset($_GET['email'])) $email=$_GET['email'];
@@ -13,6 +14,7 @@ if(isset($_GET['isDeveloper']))
 {
 	if($_GET['isDeveloper']=="true") $isDeveloper=1;
 }
+if(isset($_GET["callback"])) $callback=$_GET["callback"];
 
 $serverName="localhost";
 $serverUserName="appstore";
@@ -55,11 +57,11 @@ $response=null;
 
 if(FindUsername($connection,$username)||empty($username))
 {
-	$response=$_GET["callback"]."(".json_encode(array('username' => false, 'email' => false)).")";	
+	$response=$callback."(".json_encode(array('username' => false, 'email' => false)).")";	
 }
 else if(FindEmail($connection,$email)||empty($email))
 {
-	$response=$_GET["callback"]."(".json_encode(array('username' => true, 'email' => false)).")";
+	$response=$callback."(".json_encode(array('username' => true, 'email' => false)).")";
 }
 else
 {
@@ -76,7 +78,7 @@ else
 			$result=mysqli_query($connection,$sql);
 		}
 	}
-	$response=$_GET["callback"]."(".json_encode(array('username' => true, 'email' => true)).")";
+	$response=$callback."(".json_encode(array('username' => true, 'email' => true)).")";
 }
 
 echo $response;
