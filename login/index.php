@@ -135,7 +135,8 @@
 			alert(username+' '+email+' '+password+' '+isDeveloper);
 			$.ajax(
 			{  
-				async: false;
+				async: false,
+				cache: false,
 			    type: 'GET',  
 			    url: 'register.php', 
 			    data: {"username":username,"email":email,"password":password,"isDeveloper":isDeveloper},
