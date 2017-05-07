@@ -4,7 +4,18 @@ header("Content-type: text/javascript");
 $username=$_GET['username'];
 $email=$_GET['email'];
 $password=$_GET['password'];
-$isDeveloper=$_GET['isDeveloper'];
+$isDeveloper=0;
+if($_GET['isDeveloper']=="true") $isDeveloper=1;
+
+$serverName="localhost";
+$serverUserName="appstore";
+$serverPassword="appstore";
+$databaseName="appstore";
+$connection=mysqli_connect($serverName,$serverUserName,$serverPassword,$databaseName);
+if($connection->connect_errno>0)
+{
+	die("connection failed! ".$connection->maxdb_connect_error);
+}
 
 class AppInfo
 {	
@@ -15,34 +26,42 @@ class AppInfo
 	}
 }
 
-function Find($x)
+function FindUsername($connection,$x)
 {
-	$userList=array();
-	$serverName="localhost";
-	$serverUserName="appstore";
-	$serverPassword="appstore";
-	$databaseName="appstore";
-	$connection=mysqli_connect($serverName,$serverUserName,$serverPassword,$databaseName);
-	if($connection->connect_errno>0)
-	{
-		die("connection failed! ".$connection->maxdb_connect_error);
-	}
+	$found=false;	
 	$sql="SELECT * FROM user WHERE username ='$x'";
-	$table=mysqli_query($connection,$sql);
-	$numRows=mysqli_num_rows($table);
-	if($numRows>0)
-	{
-		$i=0;
-		while($row=mysqli_fetch_array($table))
-		{
-			$userList[]=new AppInfo($row["name"]);
-			$i++;
-			if($i==10) break;
-		}
-	}
-	mysqli_close($connection);
-	return $userList;
+	$result=mysqli_query($connection,$sql);
+	if(mysqli_num_rows($result)>0) $found=true;
+	return $found;
 }
-$response=$_GET["callback"]."(".json_encode(Find($userString)).")";
+
+function FindEmail($connection,$x)
+{
+	$found=false;	
+	$sql="SELECT * FROM user WHERE email ='$x'";
+	$result=mysqli_query($connection,$sql);
+	if(mysqli_num_rows($result)>0) $found=true;
+	return $found;
+}
+
+$response=null;
+
+if(FindUsername($connection,$username)||empty($username))
+{
+	$response=$_GET["callback"]."(".json_encode(array('username' => false, 'email' => false)).")";	
+}
+else if(FindEmail($connection,$email)||empty($email))
+{
+	$response=$_GET["callback"]."(".json_encode(array('username' => true, 'email' => false)).")";
+}
+else
+{
+	$sql = "INSERT INTO `user` (`userid`, `username`, `email`, `password`, `isDeveloper`, `isVerified`, `joiningDate`) VALUES (NULL, '$username', '$email', PASSWORD('$password'), '$isDeveloper', '0', NOW())";
+	$result=mysqli_query($connection,$sql);
+	$response=$_GET["callback"]."(".json_encode(array('username' => true, 'email' => true)).")";
+}
+
 echo $response;
+
+mysqli_close($connection);
 ?>

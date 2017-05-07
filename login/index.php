@@ -16,7 +16,9 @@
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.js"></script>
     <script src="../js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -85,18 +87,18 @@
 					<div class="col-sm-5 col-sm-offset-1">
 						<div class="signup-form"><!--sign up form-->
 							<h2>New User Signup!</h2>
-							<form id="signupForm" action="#" method="get">
-								<input type="text" name="username" placeholder="Username"/>
+							<form id="signupForm" action="">
+								<input id="signupUsername" type="text" placeholder="Username"/>
 								<p id="usernameInfo"></p>
-								<input type="email" name="email" placeholder="Email Address"/>
+								<input id="signupEmail" type="email" placeholder="Email Address"/>
 								<p id="emailInfo"></p>
-								<input type="password" name="password" placeholder="Password"/>
+								<input id="signupPassword" type="password" placeholder="Password" maxlength="64" />
 								<p id="passwordInfo"></p>
 								<span>
 									Are you a developer?
-									<input type="checkbox" name="isDeveloper" value="1" class="checkbox">
+									<input id="signupIsDeveloper" type="checkbox" value="1" class="checkbox">
 								</span>
-								<button id="signupButton" type="submit" class="btn btn-default">Signup</button>
+								<button id="signupButton" type="submit" onclick="ProcessSignup()" class="btn btn-default">Signup</button>
 							</form>
 						</div><!--/sign up form-->
 					</div>
@@ -105,7 +107,22 @@
 		</div><!--/header-middle-->
 	</header><!--/header-->
 	<script type="text/javascript">
-		
+		function ProcessSignup()
+		{
+			var username=document.getElementById("signupUsername").value;
+			var email=document.getElementById("signupEmail").value;
+			var password=document.getElementById("signupPassword").value;
+			var isDeveloper=document.getElementById("signupIsDeveloper").checked;
+			alert(username+' '+email+' '+password+' '+isDeveloper);
+			$.getJSON('register.php?callback=?',{"username":username,"email":email,"password":password,"isDeveloper":isDeveloper},function(data)
+  			{
+  				list={};
+  		    	$.each(data, function(key, val)
+  		    	{
+  		    		list[key]=val;
+  		    	});
+  			});
+		}
 	</script>
 
 
