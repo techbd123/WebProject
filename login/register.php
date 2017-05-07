@@ -60,9 +60,14 @@ else
 	$result=mysqli_query($connection,$sql);
 	if($isDeveloper==1)
 	{
-		$userid=mysqli_query($connection,"SELECT 'userid' FROM 'user' WHERE 1");
-		$sql = "INSERT INTO `developer` (`developerid`, `userid`, `companyname`, `weblink`) VALUES (NULL, '$userid', NULL, NULL)";
-		$result=mysqli_query($connection,$sql);
+		$result=mysqli_query($connection,"SELECT `userid` FROM `user` WHERE `username`='$username'");
+		if(mysqli_num_rows($result)==1)
+		{
+			$userid=mysqli_fetch_array($result);
+			$userid=$userid['userid'];
+			$sql = "INSERT INTO `developer` (`developerid`, `userid`, `companyname`, `weblink`) VALUES (NULL, '$userid', NULL, NULL)";
+			$result=mysqli_query($connection,$sql);
+		}
 	}
 	$response=$_GET["callback"]."(".json_encode(array('username' => true, 'email' => true)).")";
 }
