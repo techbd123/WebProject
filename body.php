@@ -144,7 +144,7 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>1</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 							</div>
 							<!--div class="choose">	
@@ -162,13 +162,13 @@
 									<img src="images/home/android.jpg" alt="" />
 										<h2>2</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
@@ -187,13 +187,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>3</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 								<!--!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
@@ -212,13 +212,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>4</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 								<img src="images/home/new.png" class="new" alt="" />
@@ -238,13 +238,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>5</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 								<img src="images/home/sale.png" class="new" alt="" />
@@ -264,13 +264,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>6</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
@@ -290,13 +290,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>7</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
@@ -316,13 +316,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>8</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
@@ -342,13 +342,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>9</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
@@ -368,13 +368,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>10</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
@@ -395,13 +395,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>11</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
@@ -421,13 +421,13 @@
 									<img src="images/home/android.jpg" alt="" />
 									<h2>12</h2>
 									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 								</div>
 								<div class="product-overlay">
 									<!--div class="overlay-content">
 										<h2>56</h2>
 										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Download</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 									</div-->
 								</div>
 							</div>
