@@ -28,15 +28,6 @@ if($connection->connect_errno>0)
 	die("connection failed! ".$connection->maxdb_connect_error);
 }
 
-class AppInfo
-{	
-	public $name;		
-	public function __construct($name)
-	{
-		$this->name=$name;
-	}
-}
-
 function FindUsername($connection,$x)
 {
 	$found=false;	

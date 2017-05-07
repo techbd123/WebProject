@@ -70,14 +70,15 @@
 					<div class="col-sm-5 col-sm-offset-0">
 						<div class="login-form"><!--login form-->
 							<h2>Login to Your Account</h2>
-							<form id="loginForm" action="# " method="post">
-								<input type="text" placeholder="Username/Email Address" />
-								<input type="password" placeholder="Password"/>
+							<form id="loginForm">
+								<input id="loginText" type="text" placeholder="Username/Email Address" />
+								<input id="loginPassword" type="password" placeholder="Password"/>
+								<p style="color: red" id="loginPasswordInfo"></p>
 								<span>
-									<input type="checkbox" class="checkbox"> 
+									<input id="loginIsKeepSignedIn" type="checkbox" value="1" class="checkbox"> 
 									Keep me signed in
 								</span>
-								<button id="loginButton" type="submit" class="btn btn-default">Login</button>
+								<button id="loginButton" type="submit" onclick="ProcessLogin()" class="btn btn-default">Login</button>
 							</form>
 						</div><!--/login form-->
 					</div>
@@ -105,7 +106,6 @@
 				</div>
 			</div>		
 		</div><!--/header-middle-->
-		<p id="demo"></p>
 	</header><!--/header-->
 	<script type="text/javascript">
 		function ProcessSignup()
@@ -133,7 +133,7 @@
 				return ;
 			}
 			$.ajax(
-			{  
+			{
 				async: false,
 				cache: false,
 			    type: 'GET',  
@@ -157,6 +157,34 @@
 			    }
 			});
   			return ;
+		}
+
+		function ProcessLogin()
+		{
+			var text=document.getElementById("loginText").value;
+			var password=document.getElementById("loginPassword").value;
+			var isKeepSignedIn=document.getElementById("loginIsKeepSignedIn").checked;
+			$.ajax(
+			{
+				async: false,
+				cache: false,
+			    type: 'GET',  
+			    url: 'find.php', 
+			    data: {"username":text,"email":text,"password":password},
+			    success: function(response)
+			    {
+			        if(response['username']&&response['password']||response['email']&&response['password'])
+					{
+						alert("Login Success!");
+						document.getElementById("loginForm").setAttribute("action","../");
+					}
+					else
+					{
+						alert("Wrong Login Credential!");
+					}
+			    }
+			});
+			return ;
 		}
 	</script>
 

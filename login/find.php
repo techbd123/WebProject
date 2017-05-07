@@ -1,46 +1,78 @@
 <?php
-	header("Content-type: text/javascript");
 
-	$userString=$_GET["value"];
-	$userString.="%";
+header("Content-type: text/javascript");
+header('Content-Type: application/json');
 
-	class AppInfo
-	{	
-		public $name;		
-		public function __construct($name)
-		{
-			$this->name=$name;
-		}
-	}
+$username=NULL;
+$email=NULL;
+$password=NULL;
+$callback=NULL;
 
-	function Find($x)
-	{
-		$userList=array();
-		$serverName="localhost";
-		$serverUserName="appstore";
-		$serverPassword="appstore";
-		$databaseName="appstore";
-		$connection=mysqli_connect($serverName,$serverUserName,$serverPassword,$databaseName);
-		if($connection->connect_errno>0)
-		{
-			die("connection failed! ".$connection->maxdb_connect_error);
-		}
-		$sql="SELECT * FROM appinfo WHERE name LIKE '$x'";
-		$table=mysqli_query($connection,$sql);
-		$numRows=mysqli_num_rows($table);
-		if($numRows>0)
-		{
-			$i=0;
-			while($row=mysqli_fetch_array($table))
-			{
-				$userList[]=new AppInfo($row["name"]);
-				$i++;
-				if($i==10) break;
-			}
-		}
-		mysqli_close($connection);
-		return $userList;
-	}
-	$response=$_GET["callback"]."(".json_encode(Find($userString)).")";
-	echo $response;
+if(isset($_GET['username'])) $username=$_GET['username'];
+if(isset($_GET['email'])) $email=$_GET['email'];
+if(isset($_GET['password'])) $password=$_GET['password'];
+if(isset($_GET["callback"])) $callback=$_GET["callback"];
+
+$serverName="localhost";
+$serverUserName="appstore";
+$serverPassword="appstore";
+$databaseName="appstore";
+$connection=mysqli_connect($serverName,$serverUserName,$serverPassword,$databaseName);
+if($connection->connect_errno>0)
+{
+	die("connection failed! ".$connection->maxdb_connect_error);
+}
+
+function FindUsername($connection,$x)
+{
+	$found=false;	
+	$sql="SELECT * FROM user WHERE username ='$x'";
+	$result=mysqli_query($connection,$sql);
+	if(mysqli_num_rows($result)>0) $found=true;
+	return $found;
+}
+
+function FindEmail($connection,$x)
+{
+	$found=false;	
+	$sql="SELECT * FROM user WHERE email ='$x'";
+	$result=mysqli_query($connection,$sql);
+	if(mysqli_num_rows($result)>0) $found=true;
+	return $found;
+}
+
+function FindPassword($connection,$x)
+{
+	$found=false;	
+	$sql="SELECT * FROM user WHERE password=PASSWORD('$x')";
+	$result=mysqli_query($connection,$sql);
+	if(mysqli_num_rows($result)>0) $found=true;
+	return $found;
+}
+
+$response=null;
+
+if(FindUsername($connection,$username))
+{
+	$username=true;
+	$email=false;	
+}
+else if(FindEmail($connection,$email))
+{
+	$username=false;
+	$email=true;
+}
+else
+{
+	$username=false;
+	$email=false;	
+}
+
+if(FindPassword($connection,$password)) $password=true;else $password=false;
+
+$response=$callback."".json_encode(array('username' => $username, 'email' => $email, 'password' => $password))."";
+
+mysqli_close($connection);
+
+echo $response;
 ?>
