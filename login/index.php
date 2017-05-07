@@ -18,6 +18,12 @@
     <script src="../js/respond.min.js"></script>
     <![endif]-->
     <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/jquery.js"></script>
+	<script src="../js/price-range.js"></script>
+    <script src="../js/jquery.scrollUp.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.prettyPhoto.js"></script>
+    <script src="../js/main.js"></script>
 
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
@@ -177,6 +183,10 @@
 					{
 						alert("Login Success!");
 						document.getElementById("loginForm").setAttribute("action","../");
+						var days=1;
+						if(isKeepSignedIn) days=7;
+						setCookie("login",true,days);
+						setCookie("userid",response['userid'],days);
 					}
 					else
 					{
@@ -286,14 +296,5 @@
 		</div>
 		
 	</footer><!--/Footer-->
-	
-
-  
-    <script src="../js/jquery.js"></script>
-	<script src="../js/price-range.js"></script>
-    <script src="../js/jquery.scrollUp.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.prettyPhoto.js"></script>
-    <script src="../js/main.js"></script>
 </body>
 </html>

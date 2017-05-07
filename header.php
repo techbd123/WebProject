@@ -20,6 +20,12 @@ $accountLink=new Link("Account","account","fa fa-user");
 
 $isLoggedIn=false;
 
+if(isset($_COOKIE['login']))
+{
+	$isLoggedIn=$_COOKIE['login'];
+	//printf("<script>alert(%s)</script>\n",$_COOKIE['login']);
+}
+
 ?>
 
 <header id=""><!--header-->

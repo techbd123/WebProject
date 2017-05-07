@@ -88,6 +88,39 @@
 					</div>
 				</div>
 			</div>
+			<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-2">
+					<div class="login-form"><!--login form-->
+						<h2>Upload App</h2>
+						<form action="#">
+							<label>
+								App Name:
+							</label>
+							<input type="text" placeholder="" />
+							<label>
+								 	Category:
+							</label>
+							<select>
+								<option disabled selected value> --- Select A Category --- </option>
+								<option>games</option>
+								<option>application</option>
+								<option>desktop</option>
+							</select>
+							<label>Sub Category:</label>
+							<input type="text" />
+							<label>Version:</label>
+							<input type="text" />
+							<label>App Logo Link:</label>
+							<input type="text" />
+							<label>App File Link:</label>
+							<input type="text" />
+							<button type="submit" onclick="ProcessUploadApp()" class="btn btn-default">Upload</button>
+						</form>
+					</div><!--/login form-->
+				</div>
+			</div>
+		</div>
 		</div><!--/header-middle-->
 	
 		<!--div class="header-bottom">
@@ -139,45 +172,16 @@
 		function ProcessLogout()
 		{
 			deleteCookie('login');
+			deleteCookie('userid');
+			return ;
+		}
+
+		function ProcessUploadApp()
+		{
+			
+			return ;
 		}
 	</script>
-
-	<section id="form"><!--form-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 col-sm-offset-1">
-					<div class="login-form"><!--login form-->
-						<h2>Login to Your Account</h2>
-						<form action="#">
-							<input type="email" placeholder="Email Address" />
-							<input type="password" placeholder="Password"/>
-							<span>
-								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
-							</span>
-							<button type="submit" class="btn btn-default">Login</button>
-						</form>
-					</div><!--/login form-->
-				</div>
-				<div class="col-sm-1">
-					<h2 class="or">OR</h2>
-				</div>
-				<div class="col-sm-4">
-					<div class="signup-form"><!--sign up form-->
-						<h2>New User Signup!</h2>
-						<form action="#">
-							<input type="text" placeholder="Name"/>
-							<input type="email" placeholder="Email Address"/>
-							<input type="password" placeholder="Password"/>
-							<button type="submit" class="btn btn-default">Signup</button>
-						</form>
-					</div><!--/sign up form-->
-				</div>
-			</div>
-		</div>
-	</section><!--/form-->
-	
-	
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
 			<div class="container">

@@ -7,6 +7,7 @@ $username=NULL;
 $email=NULL;
 $password=NULL;
 $callback=NULL;
+$userid=NULL;
 
 if(isset($_GET['username'])) $username=$_GET['username'];
 if(isset($_GET['email'])) $email=$_GET['email'];
@@ -46,7 +47,12 @@ function FindPassword($connection,$x)
 	$found=false;	
 	$sql="SELECT * FROM user WHERE password=PASSWORD('$x')";
 	$result=mysqli_query($connection,$sql);
-	if(mysqli_num_rows($result)>0) $found=true;
+	if(mysqli_num_rows($result)>0)
+	{
+		$found=true;
+		$row=mysqli_fetch_array($result);
+		$userid=$row['userid'];
+	}
 	return $found;
 }
 
@@ -70,7 +76,7 @@ else
 
 if(FindPassword($connection,$password)) $password=true;else $password=false;
 
-$response=$callback."".json_encode(array('username' => $username, 'email' => $email, 'password' => $password))."";
+$response=$callback."".json_encode(array('username' => $username, 'email' => $email, 'password' => $password, 'userid' => $userid))."";
 
 mysqli_close($connection);
 
