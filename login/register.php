@@ -1,11 +1,18 @@
 <?php
 header("Content-type: text/javascript");
 
-$username=$_GET['username'];
-$email=$_GET['email'];
-$password=$_GET['password'];
+$username=NULL;
+$email=NULL;
+$password=NULL;
 $isDeveloper=0;
-if($_GET['isDeveloper']=="true") $isDeveloper=1;
+
+if(isset($_GET['username'])) $username=$_GET['username'];
+if(isset($_GET['email'])) $email=$_GET['email'];
+if(isset($_GET['password'])) $password=$_GET['password'];
+if(isset($_GET['isDeveloper']))
+{
+	if($_GET['isDeveloper']=="true") $isDeveloper=1;
+}
 
 $serverName="localhost";
 $serverUserName="appstore";
