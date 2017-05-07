@@ -58,6 +58,12 @@ else
 {
 	$sql = "INSERT INTO `user` (`userid`, `username`, `email`, `password`, `isDeveloper`, `isVerified`, `joiningDate`) VALUES (NULL, '$username', '$email', PASSWORD('$password'), '$isDeveloper', '0', NOW())";
 	$result=mysqli_query($connection,$sql);
+	if($isDeveloper==1)
+	{
+		$userid=mysqli_query($connection,"SELECT 'userid' FROM 'user' WHERE 1");
+		$sql = "INSERT INTO `developer` (`developerid`, `userid`, `companyname`, `weblink`) VALUES (NULL, '$userid', NULL, NULL)";
+		$result=mysqli_query($connection,$sql);
+	}
 	$response=$_GET["callback"]."(".json_encode(array('username' => true, 'email' => true)).")";
 }
 
