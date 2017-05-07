@@ -89,11 +89,11 @@
 							<h2>New User Signup!</h2>
 							<form id="signupForm" action="">
 								<input id="signupUsername" type="text" placeholder="Username"/>
-								<p id="usernameInfo"></p>
+								<p style="color: red" id="usernameInfo"></p>
 								<input id="signupEmail" type="email" placeholder="Email Address"/>
-								<p id="emailInfo"></p>
-								<input id="signupPassword" type="password" placeholder="Password" maxlength="64" />
-								<p id="passwordInfo"></p>
+								<p style="color: red" id="emailInfo"></p>
+								<input id="signupPassword" type="password" placeholder="Password" maxlength="64" pattern=".{6,}" required title="6 characters minimum" />
+								<p style="color: red" id="passwordInfo"></p>
 								<span>
 									Are you a developer?
 									<input id="signupIsDeveloper" type="checkbox" value="1" class="checkbox">
@@ -107,21 +107,46 @@
 		</div><!--/header-middle-->
 	</header><!--/header-->
 	<script type="text/javascript">
+		var list={};
 		function ProcessSignup()
 		{
 			var username=document.getElementById("signupUsername").value;
 			var email=document.getElementById("signupEmail").value;
 			var password=document.getElementById("signupPassword").value;
 			var isDeveloper=document.getElementById("signupIsDeveloper").checked;
-			alert(username+' '+email+' '+password+' '+isDeveloper);
+			document.getElementById("usernameInfo").innerHTML="";
+			document.getElementById("emailInfo").innerHTML="";
+			document.getElementById("passwordInfo").innerHTML="";
+			if(username.length<1)
+			{
+				document.getElementById("usernameInfo").innerHTML="Username shouldn't be empty";
+				return ;	
+			}
+			if(email.indexOf("@")<0)
+			{
+				document.getElementById("emailInfo").innerHTML="Email should contain @";
+				return ;
+			}
+			if(password.length<6)
+			{
+				document.getElementById("passwordInfo").innerHTML="6 characters minimum";
+				return ;
+			}
+			//alert(username+' '+email+' '+password+' '+isDeveloper);
 			$.getJSON('register.php?callback=?',{"username":username,"email":email,"password":password,"isDeveloper":isDeveloper},function(data)
   			{
   				list={};
   		    	$.each(data, function(key, val)
   		    	{
+  		    		alert(key+' '+val);
   		    		list[key]=val;
   		    	});
   			});
+  			if(list['username']&&list['email'])
+  			{
+  				alert("Registration Success!");
+  			}
+  			return ;
 		}
 	</script>
 
