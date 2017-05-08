@@ -160,13 +160,15 @@ mysqli_close($connection);
 					{
 						while($row=mysqli_fetch_assoc($result))
 						{
+							$imgSrc='images/apps/android.jpg';
+							if(!empty($row['applogolink'])) $imgSrc=$row['applogolink'];
 							echo 
 							'
 								<div class="col-sm-4">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="'.$row['applogolink'].'" height="100" width="180" alt="images/apps/android.jpg" />
+												<img src="'.$imgSrc.'" height="100" width="180" alt="" />
 												<h2>'.$row['name'].'</h2>
 												<a href="'.$row['appfilelink'].'" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 											</div>
