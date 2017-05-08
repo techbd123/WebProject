@@ -10,7 +10,7 @@ if($connection->connect_errno>0)
 die("connection failed! ".$connection->maxdb_connect_error);
 }
 
-$sql="SELECT * FROM `appinfo` ORDER BY `appinfo`.`name` ASC LIMIT 12";
+$sql="SELECT * FROM appinfo WHERE 1 ORDER BY rand() LIMIT 12";
 
 $result=mysqli_query($connection,$sql);
 
