@@ -1,91 +1,109 @@
 <?php
-	$bannerImageSrc="images/shop/advertisement.jpg";
-	$categoryNames=array();
-	$categoryItemLists=array();
+
+$serverName="localhost";
+$serverUserName="appstore";
+$serverPassword="appstore";
+$databaseName="appstore";
+$connection=mysqli_connect($serverName,$serverUserName,$serverPassword,$databaseName);
+if($connection->connect_errno>0)
+{
+die("connection failed! ".$connection->maxdb_connect_error);
+}
+
+$sql="SELECT * FROM `appinfo` ORDER BY `appinfo`.`name` ASC LIMIT 12";
+
+$result=mysqli_query($connection,$sql);
 
 
-	array_push($categoryNames,"Games");
-	$categoryItemList=array("Action" => "#", 
-							"Board" => "#",
-							"Cards" => "#",
-							"Puzzle" => "#",
-							"Racing" => "#",
-							"Casino" => "#");
-	array_push($categoryItemLists,$categoryItemList);
+$bannerImageSrc="images/shop/advertisement.jpg";
+$categoryNames=array();
+$categoryItemLists=array();
 
 
-	array_push($categoryNames,"Application");
-	$categoryItemList=array("Education" => "#",
-							"Entertainment" => "#",
-							"Health and Fitness" =>"#",
-							"Multimedia" => "#",
-							"Photos and Videos" => "#",
-							"Social" => "#",
-							"Utilities" => "#");
-	array_push($categoryItemLists,$categoryItemList);
+array_push($categoryNames,"Games");
+$categoryItemList=array("Action" => "#", 
+						"Board" => "#",
+						"Cards" => "#",
+						"Puzzle" => "#",
+						"Racing" => "#",
+						"Casino" => "#");
+array_push($categoryItemLists,$categoryItemList);
 
-	array_push($categoryNames,"Desktop");
-	$categoryItemList=array("Security" => "#",
-							"Entertainment" => "#",
-							"Health and Fitness" =>"#",
-							"Multimedia" => "#",
-							"Photos and Videos" => "#",
-							"Social" => "#",
-							"Utilities" => "#");
-	array_push($categoryItemLists,$categoryItemList);
 
-	class Item
+array_push($categoryNames,"Application");
+$categoryItemList=array("Education" => "#",
+						"Entertainment" => "#",
+						"Health and Fitness" =>"#",
+						"Multimedia" => "#",
+						"Photos and Videos" => "#",
+						"Social" => "#",
+						"Utilities" => "#");
+array_push($categoryItemLists,$categoryItemList);
+
+array_push($categoryNames,"Desktop");
+$categoryItemList=array("Security" => "#",
+						"Entertainment" => "#",
+						"Health and Fitness" =>"#",
+						"Multimedia" => "#",
+						"Photos and Videos" => "#",
+						"Social" => "#",
+						"Utilities" => "#");
+array_push($categoryItemLists,$categoryItemList);
+
+class Item
+{
+	public $name;
+	public $href;
+	function __construct($name,$href)
+	{
+		$this->name=$name;
+		$this->href=$href;
+	}
+}
+class Category
+{
+    public $name;
+    public $itemList;
+    public $itemLength;
+
+    public function __construct($name)
     {
-    	public $name;
-    	public $href;
-    	function __construct($name,$href)
-    	{
-    		$this->name=$name;
-    		$this->href=$href;
-    	}
+        $this->name=$name;
+        $this->itemList=array();
+        $this->itemLength=0;
     }
-	class Category
+    public function TakeNameWithItemList($name,$itemListArray)
     {
-        public $name;
-        public $itemList;
-        public $itemLength;
+        $this->name=$name;
+        $this->itemList=array();
+        $this->itemLength=0;
+        while($key=key($itemListArray))
+        {
+        	array_push($this->itemList,new Item($key,current($itemListArray)));
+        	next($itemListArray);
+        	$this->itemLength++;
+        }
+    }
+    public function AddItemList($itemList)
+    {
+    	array_push($this->itemList,$itemList);
+    	$itemLength+=count($itemList);		
+    }
+}
+$category=array();
+$clen=count($categoryNames);
+$ilen=count($categoryItemLists);
+for($i=0;$i<$clen;$i++)
+{
+	$temp=new Category($categoryNames[$i]);
+	if($i<$ilen)
+	{
+		$temp->TakeNameWithItemList($categoryNames[$i],$categoryItemLists[$i]);
+	}
+	array_push($category,$temp);
+}
 
-        public function __construct($name)
-        {
-            $this->name=$name;
-            $this->itemList=array();
-            $this->itemLength=0;
-        }
-        public function TakeNameWithItemList($name,$itemListArray)
-        {
-            $this->name=$name;
-            $this->itemList=array();
-            $this->itemLength=0;
-            while($key=key($itemListArray))
-            {
-            	array_push($this->itemList,new Item($key,current($itemListArray)));
-            	next($itemListArray);
-            	$this->itemLength++;
-            }
-        }
-        public function AddItemList($itemList)
-        {
-        	array_push($this->itemList,$itemList);
-        	$itemLength+=count($itemList);		
-        }
-    }
-    $category=array();
-    $clen=count($categoryNames);
-    $ilen=count($categoryItemLists);
-    for($i=0;$i<$clen;$i++)
-    {
-    	$temp=new Category($categoryNames[$i]);
-    	if($i<$ilen)
-		{
-			$temp->TakeNameWithItemList($categoryNames[$i],$categoryItemLists[$i]);
-		}
-    	array_push($category,$temp);
-    }
+mysqli_close($connection);
 ?>
 
 <!--section id="advertisement">
@@ -137,316 +155,34 @@
 			<div class="col-sm-9 padding-right">
 				<div class="features_items"><!--features_items-->
 					<h2 class="title text-center">Featured Apps</h2>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/games/29 Card Game.png" alt="" />
-									<h2>1</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
+					<?php
+					if(mysqli_num_rows($result)>0)
+					{
+						while($row=mysqli_fetch_assoc($result))
+						{
+							echo 
+							'
+								<div class="col-sm-4">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="'.$row['applogolink'].'" height="100" width="180" alt="" />
+												<h2>'.$row['name'].'</h2>
+												<a href="'.$row['appfilelink'].'" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-							<!--div class="choose">	
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-										<h2>2</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>3</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-								<!--!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>4</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-								<img src="images/home/new.png" class="new" alt="" />
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>5</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-								<img src="images/home/sale.png" class="new" alt="" />
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>6</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-					
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>7</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-					
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>8</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>9</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>10</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-
-
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>11</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
-									<h2>12</h2>
-									<p>App Store</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-								</div>
-								<div class="product-overlay">
-									<!--div class="overlay-content">
-										<h2>56</h2>
-										<p>App Store</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
-									</div-->
-								</div>
-							</div>
-							<!--div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div-->
-						</div>
-					</div>
-
-					
-					<ul class="pagination">
+							';
+						}
+					}
+					?>
+					<!--ul class="pagination">
 						<li class="active"><a href="">1</a></li>
 						<li><a href="">2</a></li>
 						<li><a href="">3</a></li>
 						<li><a href="">&raquo;</a></li>
-					</ul>
+					</ul-->
 				</div><!--features_items-->
 			</div>
 		</div>
