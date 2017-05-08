@@ -120,7 +120,7 @@
 
 								<label>App File Link:</label>
 								<input id="appFileLink" type="text" />
-								
+
 								<button type="submit" onclick="ProcessUploadApp()" class="btn btn-default">Upload</button>
 							</form>
 						</div><!--/Upload form--><div class="login-form"><!--Upload form-->
@@ -195,7 +195,6 @@
 			var applogolink=document.getElementById("appLogoLink").value;
 			var appfilelink=document.getElementById("appFileLink").value;
 			var userid=<?php echo $_COOKIE['userid'];?>;
-			alert(name+' '+category+' '+subcategory+' '+version+' '+appLogoLink+' '+appfilelink+' '+userid);
 			$.ajax(
 			{
 				async: false,
