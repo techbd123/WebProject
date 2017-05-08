@@ -141,7 +141,7 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="images/home/android.jpg" alt="" />
+									<img src="images/games/29 Card Game.png" alt="" />
 									<h2>1</h2>
 									<p>App Store</p>
 									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
