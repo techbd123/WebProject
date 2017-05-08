@@ -169,7 +169,7 @@ mysqli_close($connection);
 										<div class="single-products">
 											<div class="productinfo text-center">
 												<img src="'.$imgSrc.'" height="100" width="180" alt="" />
-												<h2>'.$row['name'].'</h2>
+												<h4 style="color:#6666ff">'.$row['name'].'</h4>
 												<a href="'.$row['appfilelink'].'" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 											</div>
 										</div>
