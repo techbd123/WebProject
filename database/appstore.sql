@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 08, 2017 at 12:29 AM
+-- Generation Time: May 08, 2017 at 07:58 AM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -75,8 +75,7 @@ CREATE TABLE `user` (
 -- Indexes for table `appinfo`
 --
 ALTER TABLE `appinfo`
-  ADD PRIMARY KEY (`appid`),
-  ADD UNIQUE KEY `developerid` (`developerid`);
+  ADD PRIMARY KEY (`appid`);
 
 --
 -- Indexes for table `developer`
@@ -115,12 +114,6 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `appinfo`
---
-ALTER TABLE `appinfo`
-  ADD CONSTRAINT `appinfo_ibfk_1` FOREIGN KEY (`developerid`) REFERENCES `developer` (`developerid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `developer`

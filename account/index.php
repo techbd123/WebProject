@@ -97,58 +97,33 @@
 						echo '
 						<div class="login-form"><!--Upload form-->
 							<h2>Upload App</h2>
-							<form action="#">
-								<label>
-									App Name:
-								</label>
-								<input type="text" placeholder="" />
-								<label>
-									 	Category:
-								</label>
-								<select>
+							<form id="uploadForm" action="">
+								<label>App Name:</label>
+								<input id="appName" type="text" placeholder="" />
+
+								<label>Category:</label>
+								<select id="appCategory">
 									<option disabled selected value> --- Select A Category --- </option>
 									<option>games</option>
 									<option>application</option>
 									<option>desktop</option>
 								</select>
+
 								<label>Sub Category:</label>
-								<input type="text" />
+								<input id="appSubCategory" type="text" />
+
 								<label>Version:</label>
-								<input type="text" />
+								<input id="appVersion" type="text" />
+
 								<label>App Logo Link:</label>
-								<input type="text" />
+								<input id="appLogoLink" type="text" />
+
 								<label>App File Link:</label>
-								<input type="text" />
+								<input id="appFileLink" type="text" />
+								
 								<button type="submit" onclick="ProcessUploadApp()" class="btn btn-default">Upload</button>
 							</form>
 						</div><!--/Upload form--><div class="login-form"><!--Upload form-->
-
-							<h2>Upload App</h2>
-							<form action="#">
-								<label>
-									App Name:
-								</label>
-								<input type="text" placeholder="" />
-								<label>
-									 	Category:
-								</label>
-								<select>
-									<option disabled selected value> --- Select A Category --- </option>
-									<option>games</option>
-									<option>application</option>
-									<option>desktop</option>
-								</select>
-								<label>Sub Category:</label>
-								<input type="text" />
-								<label>Version:</label>
-								<input type="text" />
-								<label>App Logo Link:</label>
-								<input type="text" />
-								<label>App File Link:</label>
-								<input type="text" />
-								<button type="submit" onclick="ProcessUploadApp()" class="btn btn-default">Upload</button>
-							</form>
-						</div><!--/Upload form-->
 						';
 					}
 					?>
@@ -213,7 +188,28 @@
 
 		function ProcessUploadApp()
 		{
-
+			var name=document.getElementById("appName").value;
+			var category=document.getElementById("appCategory").value;
+			var subcategory=document.getElementById("appSubCategory").value;
+			var version=document.getElementById("appVersion").value;
+			var applogolink=document.getElementById("appLogoLink").value;
+			var appfilelink=document.getElementById("appFileLink").value;
+			var userid=<?php echo $_COOKIE['userid'];?>;
+			alert(name+' '+category+' '+subcategory+' '+version+' '+appLogoLink+' '+appfilelink+' '+userid);
+			$.ajax(
+			{
+				async: false,
+				cache: false,
+			    type: 'GET',
+			    url: 'uploadApp.php', 
+			    data: {"name":name, "category":category, "subcategory":subcategory, "version":version, "applogolink":applogolink,"appfilelink":appfilelink,"userid":userid},
+			    success: function(response)
+			    {
+			    	if(response['result']) alert("Upload Success!");
+			    	else alert("Upload Failed!");
+					document.getElementById("uploadForm").setAttribute("action","./");
+			    }
+			});
 			return ;
 		}
 	</script>
