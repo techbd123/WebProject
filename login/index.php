@@ -187,6 +187,7 @@
 						if(isKeepSignedIn) days=7;
 						setCookie("login",true,days);
 						setCookie("userid",response['userid'],days);
+						setCookie("isDeveloper",response['isDeveloper'],days);
 					}
 					else
 					{

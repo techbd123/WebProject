@@ -89,38 +89,72 @@
 				</div>
 			</div>
 			<div class="container">
-			<div class="row">
-				<div class="col-sm-4 col-sm-offset-2">
-					<div class="login-form"><!--login form-->
-						<h2>Upload App</h2>
-						<form action="#">
-							<label>
-								App Name:
-							</label>
-							<input type="text" placeholder="" />
-							<label>
-								 	Category:
-							</label>
-							<select>
-								<option disabled selected value> --- Select A Category --- </option>
-								<option>games</option>
-								<option>application</option>
-								<option>desktop</option>
-							</select>
-							<label>Sub Category:</label>
-							<input type="text" />
-							<label>Version:</label>
-							<input type="text" />
-							<label>App Logo Link:</label>
-							<input type="text" />
-							<label>App File Link:</label>
-							<input type="text" />
-							<button type="submit" onclick="ProcessUploadApp()" class="btn btn-default">Upload</button>
-						</form>
-					</div><!--/login form-->
+				<div class="row">
+					<div class="col-sm-4 col-sm-offset-2">
+					<?php
+					if($_COOKIE['isDeveloper']=="1")
+					{
+						echo '
+						<div class="login-form"><!--Upload form-->
+							<h2>Upload App</h2>
+							<form action="#">
+								<label>
+									App Name:
+								</label>
+								<input type="text" placeholder="" />
+								<label>
+									 	Category:
+								</label>
+								<select>
+									<option disabled selected value> --- Select A Category --- </option>
+									<option>games</option>
+									<option>application</option>
+									<option>desktop</option>
+								</select>
+								<label>Sub Category:</label>
+								<input type="text" />
+								<label>Version:</label>
+								<input type="text" />
+								<label>App Logo Link:</label>
+								<input type="text" />
+								<label>App File Link:</label>
+								<input type="text" />
+								<button type="submit" onclick="ProcessUploadApp()" class="btn btn-default">Upload</button>
+							</form>
+						</div><!--/Upload form--><div class="login-form"><!--Upload form-->
+
+							<h2>Upload App</h2>
+							<form action="#">
+								<label>
+									App Name:
+								</label>
+								<input type="text" placeholder="" />
+								<label>
+									 	Category:
+								</label>
+								<select>
+									<option disabled selected value> --- Select A Category --- </option>
+									<option>games</option>
+									<option>application</option>
+									<option>desktop</option>
+								</select>
+								<label>Sub Category:</label>
+								<input type="text" />
+								<label>Version:</label>
+								<input type="text" />
+								<label>App Logo Link:</label>
+								<input type="text" />
+								<label>App File Link:</label>
+								<input type="text" />
+								<button type="submit" onclick="ProcessUploadApp()" class="btn btn-default">Upload</button>
+							</form>
+						</div><!--/Upload form-->
+						';
+					}
+					?>
+					</div>
 				</div>
 			</div>
-		</div>
 		</div><!--/header-middle-->
 	
 		<!--div class="header-bottom">
@@ -173,12 +207,13 @@
 		{
 			deleteCookie('login');
 			deleteCookie('userid');
+			deleteCookie('isDeveloper');
 			return ;
 		}
 
 		function ProcessUploadApp()
 		{
-			
+
 			return ;
 		}
 	</script>
