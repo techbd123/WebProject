@@ -162,7 +162,7 @@ mysqli_close($connection);
 						{
 							$imgSrc='images/apps/android.jpg';
 							if(!empty($row['applogolink'])) $imgSrc=$row['applogolink'];
-							echo 
+							echo
 							'
 								<div class="col-sm-4">
 									<div class="product-image-wrapper">
