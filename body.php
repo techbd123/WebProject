@@ -166,7 +166,7 @@ mysqli_close($connection);
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="'.$row['applogolink'].'" height="100" width="180" alt="" />
+												<img src="'.$row['applogolink'].'" height="100" width="180" alt="images/apps/android.jpg" />
 												<h2>'.$row['name'].'</h2>
 												<a href="'.$row['appfilelink'].'" class="btn btn-default add-to-cart"><i class="fa fa-download"></i>Download</a>
 											</div>
